@@ -5,10 +5,10 @@ var app = express.createServer(express.logger());
 var fs = require('fs');
 
 app.get('/', function(request, response) {
-  var buffer = new Buffer();
+  var buffer = new Buffer(8);
   var fl = fs.readFile('hello.html', function (err, data) {
    if (err) throw err;
-   buffer.write(data, 'utf8');
+   buffer.write(data, 'utf-8');
 });
   response.send(fl);
 });

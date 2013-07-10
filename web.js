@@ -3,7 +3,7 @@ var express = require('express');
 var app = express.createServer(express.logger());
 
 var fs = require('fs');
-var buffer = new Buffer(34);
+var buffer = new Buffer(1000);
 
 app.get('/', function(request, response) {
   var content = false;
@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
       buffer.write(content);
   } catch (err) {
 } 
-  response.send(buffer.toString('utf-8', 0, 32));
+  response.send(buffer.toString('utf-8', 0, buffer.length));
 });
 
 var port = process.env.PORT || 5000;

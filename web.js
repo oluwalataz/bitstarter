@@ -6,10 +6,11 @@ var fs = require('fs');
 
 app.get('/', function(request, response) {
   content = false;
-  fs.readFile(__dirname+'/'+'index.html', 'utf8', function (errr, data) {
-    if (!err) {
-      content = data;
-  }});
+  try {
+     
+      content = fs.readFileSync(__dirname+'/'+'index.html', 'utf8');
+  } catch (err) {
+} 
   response.send(content);
 });
 

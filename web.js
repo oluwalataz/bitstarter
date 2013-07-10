@@ -3,9 +3,9 @@ var express = require('express');
 var app = express.createServer(express.logger());
 
 var fs = require('fs');
-var content = false;
 
 app.get('/', function(request, response) {
+  content = false;
   fs.readFile(__dirname+'/'+'index.html', 'utf8', function (errr, data) {
     if (!err) {
       content = data;

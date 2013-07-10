@@ -9,7 +9,7 @@ app.get('/', function(request, response) {
   var content = false;
   try {
      
-      content = fs.readFileSync(__dirname+'/'+'index.html', 'utf8');
+      content = fs.readFileSync(__dirname+'/'+'index.html', 'ascii');
       buffer.write(content);
   } catch (err) {
 } 

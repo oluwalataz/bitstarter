@@ -115,7 +115,7 @@ if(require.main == module) {
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
         .option('-s, --site [site_url]', 'Site url to check [site]', clone(checkUrl), SITEURL_DEFAULT)
         .parse(process.argv);
-    if (program.file2) {
+    if (program.file) {
         var checkJson = checkHtmlFile(program.file, program.checks);
     } else if (program.site) {
         var checkJson = checkUrlData(program.site, program.checks);
@@ -123,6 +123,7 @@ if(require.main == module) {
 
     var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);
+    fs.writeFileSync('test_jason_out.json', outJson);
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
